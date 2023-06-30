@@ -1,4 +1,9 @@
 import os
+import re
+
+# Function to sanitize the filename by removing invalid characters
+def sanitize_filename(filename):
+    return re.sub(r'[<>:"/\\|?*]', '', filename)
 
 # Function to download a video based on the provided URL and destination folder
 def download_video(url, download_directory):
@@ -8,6 +13,7 @@ def download_video(url, download_directory):
         v = Vimeo(url)
         best_stream = v.best_stream
         filename = f"{v.metadata.title}.mp4" if v.metadata.title else "video.mp4"
+        filename = sanitize_filename(filename)
         video_path = best_stream.download(download_directory, filename=filename)
         print(f"Video successfully downloaded: {video_path}")
     except Exception as e:

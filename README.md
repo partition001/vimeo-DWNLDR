@@ -1,4 +1,4 @@
-# vimeoDWNLDR
+# vimeo-DWNLDR
 
 The script allows you to get the desired video in just a couple of clicks.
 
